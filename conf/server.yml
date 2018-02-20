@@ -1,0 +1,26 @@
+server:
+  applicationContextPath: /application
+  rootPath: /api/*
+  applicationConnectors:
+    - type: http
+      port: 8021
+  adminConnectors:
+    - type: http
+      port: 8022
+
+logging:
+  level: INFO
+  loggers:
+    com.mainpackage: INFO
+  appenders:
+    - type: console
+    - type: file
+      threshold: INFO
+      logFormat: "%-6level [%d{HH:mm:ss.SSS}] [%t] %logger{5} - %X{code} %msg %n"
+      currentLogFilename: log/application.log
+      archivedLogFilenamePattern: log/application-%d{yyyy-MM-dd}-%i.log.gz
+      archivedFileCount: 7
+      timeZone: UTC
+      maxFileSize: 10MB
+
+foo: bar

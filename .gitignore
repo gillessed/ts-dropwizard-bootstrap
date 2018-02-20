@@ -1,0 +1,19 @@
+# Java Stuff
+generated_src
+out
+build
+
+# Idea Studd
+*.iml
+*.ipr
+*.iws
+
+# Gradle
+gradle-*
+.gradle
+
+# Node
+app/node_modules
+
+# Logs
+log

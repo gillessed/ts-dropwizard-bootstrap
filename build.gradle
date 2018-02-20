@@ -1,0 +1,20 @@
+plugins {
+    id 'java'
+    id 'maven'
+    id 'application'
+    id 'distribution'
+    id 'idea'
+    id 'org.inferred.processors' version '1.2.15'
+}
+
+dependencies {
+    compile "io.dropwizard:dropwizard-core:${dropwizardVersion}"
+    compile "io.dropwizard:dropwizard-assets:${dropwizardVersion}"
+    processor "org.immutables:value:${immutablesVersion}"
+}
+
+repositories {
+    mavenCentral()
+}
+
+mainClassName = "com.mainpackage.application.ApplicationMain"
