@@ -18,3 +18,25 @@ repositories {
 }
 
 mainClassName = "com.mainpackage.application.ApplicationMain"
+
+task(buildTypescript, type: Exec) {
+    workingDir './app'
+    commandLine 'webpack'
+}
+
+task(copyAssets, type: Copy) {
+    from './app/dist'
+    into "${sourceSets.main.output.resourcesDir}/static/"
+    include '**/*'
+    filter { line -> line.replaceAll('bundle.js', '/application/static/bundle.js') }
+}
+
+copyAssets.dependsOn buildTypescript
+distTar.dependsOn copyAssets
+
+distTar {
+    into(project.name) {
+        from '.'
+        include 'conf/*'
+    }
+}
